@@ -23,7 +23,28 @@ function formatDate(timestamp) {
 }
 
 
+function displayForecast(){
+  let forecastDay = document.querySelector('#forecast');
+     forecastDays= `<div class="row">`;
+     let day = ['Sun','Mon','Tue','Wed','Thu','Fri',];
+     day.forEach(function(day){
 
+       forecastDays = 
+       forecastDays +
+              `<div class="col-2">
+                ${day}
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                  alt="partly_cloudy"
+                />
+                <span class="max">33°</span> <span class="min">32°</span>
+              </div>
+            `
+     })
+     forecastDays = forecastDays + `</div>`;
+     forecastDay.innerHTML = forecastDays;
+
+}
 
 function getForecast(coordinates) {
   let apiKey = "9941e27eb40543810ee2a95e3ea433af";
@@ -73,3 +94,4 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
 search("Lagos");
+displayForecast();
